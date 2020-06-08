@@ -1,4 +1,4 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: [ 'gcloud alpha builds triggers run', '--branch=master', 'default-push-trigger-1' ]
+  args: [ 'gcloud', 'alpha', 'builds', 'triggers', 'run', '--branch=master', 'default-push-trigger-1' ]
   
