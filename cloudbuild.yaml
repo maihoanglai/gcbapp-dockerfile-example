@@ -1,8 +1,7 @@
 steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   args: [ 'gcloud', 'alpha', 'builds', 'triggers', 'run', '--branch=master', 'default-push-trigger-1' ]  
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/smart-altar-247605/my-image', '.']
-  timeout: 500s
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args: [ 'gcloud', 'alpha', 'builds', 'triggers', 'run', '--branch=maihoanglai-adding-yaml', 'default-push-trigger-1' ]  
   waitFor: ['-']
 
