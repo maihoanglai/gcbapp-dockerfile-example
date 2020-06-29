@@ -14,4 +14,4 @@
 
 FROM alpine
 COPY helloworld.sh /
-CMD ["/helloworld.sh"]
+CMD ["/a/helloworld.sh"]
