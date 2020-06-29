@@ -1,4 +1,5 @@
 steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   args: [ 'gcloud', 'alpha', 'builds', 'triggers', 'run', '--branch=master', 'default-push-trigger-1' ]
+  waitFor: ['-']
 
