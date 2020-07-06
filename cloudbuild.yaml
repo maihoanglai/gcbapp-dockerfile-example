@@ -34,3 +34,14 @@ steps:
     name: gcr.io/cloud-builders/gcloud
     waitFor: 
       - Step2
+      
+      
+  - 
+    args: 
+      - "-c"
+      - "echo \"Content in /workspace/first.txt\" && cat /workspace/first.txt\n"
+    entrypoint: /bin/bash
+    id: Step4
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    waitFor: 
+      - Step3
