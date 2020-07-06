@@ -35,13 +35,22 @@ steps:
     waitFor: 
       - Step2
       
+  - 
+    args: 
+      - "-c"
+      - "gcloud builds describe | grep \"status: \" | cut -b 9- > /workspace/first.txt\n"
+    entrypoint: /bin/bash
+    id: Step4
+    name: gcr.io/cloud-builders/gcloud
+    waitFor: 
+      - Step3
       
   - 
     args: 
       - "-c"
       - "echo \"Content in /workspace/first.txt\" && cat /workspace/first.txt\n"
     entrypoint: /bin/bash
-    id: Step4
+    id: Step5
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
     waitFor: 
-      - Step3
+      - Step4
