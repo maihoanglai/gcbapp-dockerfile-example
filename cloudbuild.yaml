@@ -28,19 +28,9 @@ steps:
   - 
     args: 
       - "-c"
-      - "gcloud builds describe $(cat /workspace/first.txt)\n"
+      - "gcloud builds describe $(cat /workspace/first.txt) | grep \"FAILURE\" && gcloud builds cancel $BUILD_ID && exit 1 || exit 0 \n"
     entrypoint: /bin/bash
     id: Step3
     name: gcr.io/cloud-builders/gcloud
     waitFor: 
       - Step2
-      
-  - 
-    args: 
-      - "-c"
-      - "gcloud builds describe $(cat /workspace/first.txt) | grep \"FAILURE\" && gcloud builds cancel $BUILD_ID && exit 1 || exit 0 \n"
-    entrypoint: /bin/bash
-    id: Step4
-    name: gcr.io/cloud-builders/gcloud
-    waitFor: 
-      - Step3
