@@ -10,7 +10,7 @@ steps:
   - 
     args: 
       - sleep
-      - "180"
+      - "60"
     id: ubuntu
     name: ubuntu
     waitFor: 
@@ -38,7 +38,7 @@ steps:
   - 
     args: 
       - "-c"
-      - "gcloud builds describe | grep \"status: \" | cut -b 9- > /workspace/first.txt\n"
+      - "gcloud builds describe $(cat /workspace/first.txt)\n | grep \"status: \" | cut -b 9- > /workspace/first.txt\n"
     entrypoint: /bin/bash
     id: Step4
     name: gcr.io/cloud-builders/gcloud
