@@ -6,6 +6,15 @@ steps:
     entrypoint: /bin/bash
     id: Step1
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    
+  - 
+    args: 
+      - sleep
+      - "60"
+    id: ubuntu
+    name: ubuntu
+    waitFor: 
+      - Step1
   - 
     args: 
       - "-c"
@@ -15,14 +24,7 @@ steps:
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
     waitFor: 
       - ubuntu
-  - 
-    args: 
-      - sleep
-      - "60"
-    id: ubuntu
-    name: ubuntu
-    waitFor: 
-      - Step1
+
   - 
     args: 
       - "-c"
