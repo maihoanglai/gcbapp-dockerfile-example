@@ -3,25 +3,25 @@ steps:
   id: 'Step1'
   entrypoint: /bin/bash
   args:
-  - -c
-  - |
-  gcloud alpha builds triggers run --branch=master TEST-DECRYPT | grep "id: " | cut -b 9- > /workspace/first.txt
+    - -c
+    - |
+    gcloud alpha builds triggers run --branch=master TEST-DECRYPT | grep "id: " | cut -b 9- > /workspace/first.txt
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   id: 'Step2'
   entrypoint: /bin/bash
   args:
-  - -c
-  - |
-  echo "Content in /workspace/first.txt" && cat /workspace/first.txt
+    - -c
+    - |
+    echo "Content in /workspace/first.txt" && cat /workspace/first.txt
   waitFor: ['Step1']
 
 - name: 'gcr.io/cloud-builders/gcloud'
   id: 'Step3'
   entrypoint: /bin/bash
   args:
-  - '-c'
-  - |
-  gcloud builds describe $(cat /workspace/first.txt)
+    - '-c'
+    - |
+    gcloud builds describe $(cat /workspace/first.txt)
   waitFor: ['Step2']
 
