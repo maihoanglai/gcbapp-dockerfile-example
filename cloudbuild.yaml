@@ -14,11 +14,11 @@ steps:
     id: Step2
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
     waitFor: 
-      - Step1
+      - ubuntu
   - 
     args: 
       - sleep
-      - "600"
+      - "60"
     name: ubuntu
     waitFor: 
       - Step1
