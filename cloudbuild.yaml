@@ -10,7 +10,7 @@ steps:
   - 
     args: 
       - sleep
-      - "60"
+      - "180"
     id: ubuntu
     name: ubuntu
     waitFor: 
