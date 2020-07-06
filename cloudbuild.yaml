@@ -17,6 +17,15 @@ steps:
       - Step1
   - 
     args: 
+      - sleep
+      - "60"
+    entrypoint: /bin/bash
+    id: Sleeping
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    waitFor: 
+      - Step1
+  - 
+    args: 
       - "-c"
       - "gcloud builds describe $(cat /workspace/first.txt)\n"
     entrypoint: /bin/bash
