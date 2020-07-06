@@ -38,19 +38,9 @@ steps:
   - 
     args: 
       - "-c"
-      - "gcloud builds describe $(cat /workspace/first.txt) | grep \"status: \" | head -1 | cut -b 9- > /workspace/first.txt\n"
+      - "gcloud builds describe $(cat /workspace/first.txt) | grep \"FAILURE\" && gcloud builds cancel $BUILD_ID && exit 1 || exit 0 \n"
     entrypoint: /bin/bash
     id: Step4
     name: gcr.io/cloud-builders/gcloud
     waitFor: 
       - Step3
-      
-  - 
-    args: 
-      - "-c"
-      - "echo \"Content in /workspace/first.txt\" && cat /workspace/first.txt\n"
-    entrypoint: /bin/bash
-    id: Step5
-    name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    waitFor: 
-      - Step4
