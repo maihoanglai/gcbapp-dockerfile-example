@@ -2,7 +2,7 @@ steps:
   - 
     args: 
       - "-c"
-      - "gcloud alpha builds triggers run --branch=master TEST-DECRYPT | grep \"id: \" | cut -b 9- > /workspace/first.txt\n"
+      - "gcloud alpha builds triggers run --branch=master master-kicker | grep \"id: \" | cut -b 9- > /workspace/first.txt\n"
     entrypoint: /bin/bash
     id: Step1
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
