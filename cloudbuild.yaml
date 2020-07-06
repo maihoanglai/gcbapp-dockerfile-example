@@ -18,10 +18,8 @@ steps:
   - 
     args: 
       - sleep
-      - "60"
-    entrypoint: /bin/bash
-    id: Sleeping
-    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+      - "600"
+    name: ubuntu
     waitFor: 
       - Step1
   - 
