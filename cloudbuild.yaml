@@ -17,6 +17,7 @@ steps:
 
   - 
     args: 
+      - "-c"
       - "ls"
     id: ls
     entrypoint: /bin/bash
@@ -26,6 +27,7 @@ steps:
       
   - 
     args: 
+      - "-c"
       - "echo \": Decrypt Files\" >> workspace/first.txt\n"
     id: append
     entrypoint: /bin/bash
