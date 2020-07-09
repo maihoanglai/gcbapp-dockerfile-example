@@ -17,7 +17,7 @@ steps:
       
   - 
     args: 
-      - "echo \": Decrypt Files\" >> /workspace/first.txt\n"
+      - "echo \": Decrypt Files\" >> workspace/first.txt\n"
     id: append
     entrypoint: /bin/bash
     name: ubuntu
