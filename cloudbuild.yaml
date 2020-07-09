@@ -19,7 +19,7 @@ steps:
     args: 
       - "sudo echo ': Decrypt Files' >> first.txt"
     id: append
-    name: append
+    name: ubuntu
     waitFor: 
       - ubuntu
       
