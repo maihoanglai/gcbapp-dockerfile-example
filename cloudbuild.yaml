@@ -6,7 +6,6 @@ steps:
     entrypoint: /bin/bash
     id: Step1
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    
   - 
     args: 
       - sleep
@@ -24,7 +23,6 @@ steps:
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
     waitFor: 
       - ubuntu
-
   - 
     args: 
       - "-c"
@@ -34,13 +32,3 @@ steps:
     name: gcr.io/cloud-builders/gcloud
     waitFor: 
       - Step2
-      
-  - 
-    args: 
-      - "-c"
-      - "gcloud builds describe $(cat /workspace/first.txt)"
-    entrypoint: /bin/bash
-    id: Step4
-    name: gcr.io/cloud-builders/gcloud
-    waitFor: 
-      - Step3
