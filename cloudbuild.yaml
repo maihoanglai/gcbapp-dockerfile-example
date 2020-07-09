@@ -47,7 +47,7 @@ steps:
   - 
     args: 
       - "-c"
-      - "gcloud builds describe $(cat /workspace/first.txt)"
+      - "gcloud builds describe $(cat head -n 1 /workspace/first.txt)"
     entrypoint: /bin/bash
     id: Step3
     name: gcr.io/cloud-builders/gcloud
