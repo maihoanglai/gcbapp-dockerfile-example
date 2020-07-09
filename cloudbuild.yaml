@@ -2,39 +2,18 @@ steps:
   - 
     args: 
       - "-c"
-      - "gcloud alpha builds triggers run --branch=master TEST-DECRYPT | grep \"id: \" | cut -b 9- > /workspace/first.txt\n"
+      - "gcloud alpha builds triggers run --branch=master master-kicker | grep \"id: \" | cut -b 9- > /workspace/first.txt\n"
     entrypoint: /bin/bash
     id: Step1
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
   - 
     args: 
       - sleep
-      - "10"
+      - "60"
     id: ubuntu
     name: ubuntu
     waitFor: 
       - Step1
-
-  - 
-    args: 
-      - "-c"
-      - "ls"
-    id: ls
-    entrypoint: /bin/bash
-    name: ubuntu
-    waitFor: 
-      - ubuntu
-      
-  - 
-    args: 
-      - "-c"
-      - "echo \": Decrypt Files\" >> first.txt\n"
-    id: append
-    entrypoint: /bin/bash
-    name: ubuntu
-    waitFor: 
-      - ls
-      
   - 
     args: 
       - "-c"
@@ -43,11 +22,11 @@ steps:
     id: Step2
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
     waitFor: 
-      - append
+      - ubuntu
   - 
     args: 
       - "-c"
-      - "gcloud builds describe $(head -n 1 /workspace/first.txt)"
+      - "gcloud builds describe $(head -n 1 /workspace/first.txt) | grep \"FAILURE\" && gcloud builds cancel $BUILD_ID && exit 1 || exit 0 \n"
     entrypoint: /bin/bash
     id: Step3
     name: gcr.io/cloud-builders/gcloud
