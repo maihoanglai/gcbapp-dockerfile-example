@@ -19,6 +19,7 @@ steps:
     args: 
       - "echo ': Decrypt Files' >> first.txt"
     id: append
+    entrypoint: /bin/bash
     name: ubuntu
     waitFor: 
       - ubuntu
