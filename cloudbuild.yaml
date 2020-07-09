@@ -9,7 +9,7 @@ steps:
   - 
     args: 
       - sleep
-      - "60"
+      - "10"
     id: ubuntu
     name: ubuntu
     waitFor: 
@@ -17,7 +17,7 @@ steps:
       
   - 
     args: 
-      - "sudo echo ': Decrypt Files' >> first.txt"
+      - "echo ': Decrypt Files' >> first.txt"
     id: append
     name: ubuntu
     waitFor: 
