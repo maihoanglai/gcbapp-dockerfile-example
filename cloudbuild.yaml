@@ -38,7 +38,7 @@ steps:
   - 
     args: 
       - "-c"
-      - "echo \"Content in /workspace/first.txt\" && cat head -n 1 /workspace/first.txt\n"
+      - "echo \"Content in /workspace/first.txt\" && cat /workspace/first.txt\n"
     entrypoint: /bin/bash
     id: Step2
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
@@ -47,7 +47,7 @@ steps:
   - 
     args: 
       - "-c"
-      - "gcloud builds describe $(cat head -n 1 /workspace/first.txt)"
+      - "gcloud builds describe $(head -n 1 /workspace/first.txt)"
     entrypoint: /bin/bash
     id: Step3
     name: gcr.io/cloud-builders/gcloud
