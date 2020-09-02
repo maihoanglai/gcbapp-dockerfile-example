@@ -4,7 +4,3 @@ steps:
 images:
 - 'gcr.io/$PROJECT_ID/quickstart-image'
 
-artifacts:
-  objects:
-    location: gs://multi-test
-    paths: ['*.*']
